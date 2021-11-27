@@ -48,7 +48,8 @@ public class ProfileServiceImpl implements ProfileService {
         if (userAuthDetails == null) throw new IllegalArgumentException("User not found");
 
         if (passwordEncoder.matches(passwordChangeDTO.getOldPassword(), userAuthDetails.getPassword())) {
-            userModelProxy.changePassword(username, new NewPasswordDTO(passwordChangeDTO.getNewPassword()));
+            var encodedNewPassword = passwordEncoder.encode(passwordChangeDTO.getNewPassword());
+            userModelProxy.changePassword(username, new NewPasswordDTO(encodedNewPassword));
         }
     }
 
