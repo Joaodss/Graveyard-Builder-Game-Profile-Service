@@ -2,14 +2,18 @@ package com.ironhack.profileservice.dto;
 
 import lombok.*;
 
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
 @ToString
-public class NewPasswordDTO {
+public class UserAuthDTO {
 
-    private String newPassword;
+    private String username;
+    private String password;
+    private Set<String> roles;
 
 }

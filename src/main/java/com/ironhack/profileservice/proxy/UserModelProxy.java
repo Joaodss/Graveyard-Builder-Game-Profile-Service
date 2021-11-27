@@ -1,6 +1,7 @@
 package com.ironhack.profileservice.proxy;
 
 import com.ironhack.profileservice.dto.NewPasswordDTO;
+import com.ironhack.profileservice.dto.UserAuthDTO;
 import com.ironhack.profileservice.dto.UserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,10 @@ public interface UserModelProxy {
 
     @GetMapping("/username/{username}")
     ResponseEntity<UserDTO> getUserByUsername(@PathVariable String username);
+
+    @GetMapping("/auth/{username}")
+    ResponseEntity<UserAuthDTO> getUserAuth(@PathVariable String username);
+
 
     @PutMapping("/update/{username}")
     UserDTO updateUser(@PathVariable String username, @RequestBody UserDTO user);
