@@ -50,11 +50,13 @@ public class ProfileServiceImpl implements ProfileService {
         if (passwordEncoder.matches(passwordChangeDTO.getOldPassword(), userAuthDetails.getPassword())) {
             var encodedNewPassword = passwordEncoder.encode(passwordChangeDTO.getNewPassword());
             userModelProxy.changePassword(username, new NewPasswordDTO(encodedNewPassword));
+        } else {
+            throw new IllegalArgumentException("Wrong password");
         }
     }
 
-    public UserDTO changeUserPictureUrl(String username, UserDTO userDTO) {
-        log.info("Changing user picture url for user: {}", username);
+    public UserDTO changeUserDetails(String username, UserDTO userDTO) {
+        log.info("Changing user details for user: {}", username);
         getUserProfile(username);
         return userModelProxy.updateUser(username, userDTO);
     }
