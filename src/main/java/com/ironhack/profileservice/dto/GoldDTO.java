@@ -15,6 +15,6 @@ public class GoldDTO {
 
     @NotNull
     @PositiveOrZero
-    private Long newGold;
+    private Long gold;
 
 }

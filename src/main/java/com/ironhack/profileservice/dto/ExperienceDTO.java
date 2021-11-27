@@ -15,6 +15,6 @@ public class ExperienceDTO {
 
     @NotNull
     @PositiveOrZero
-    private Long newExperience;
+    private Long experience;
 
 }
