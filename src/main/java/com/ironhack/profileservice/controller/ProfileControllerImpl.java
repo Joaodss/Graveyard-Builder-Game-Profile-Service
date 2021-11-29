@@ -22,6 +22,7 @@ import static org.springframework.http.HttpStatus.OK;
 public class ProfileControllerImpl implements ProfileController {
     private final ProfileService profileService;
 
+
     @GetMapping("/user")
     @ResponseStatus(OK)
     public UserDTO getUserProfile(@RequestHeader("username") String username) {
@@ -45,10 +46,8 @@ public class ProfileControllerImpl implements ProfileController {
 
     @PostMapping("/update/password")
     @ResponseStatus(OK)
-    public void changeUserPassword(
-            @RequestHeader("username") String username,
-            @RequestBody @Valid PasswordChangeDTO PasswordChangeDTO
-    ) {
+    public void changeUserPassword(@RequestHeader("username") String username,
+                                   @RequestBody @Valid PasswordChangeDTO PasswordChangeDTO) {
         log.info("Changing user password");
         try {
             profileService.changeUserPassword(username, PasswordChangeDTO);
@@ -60,10 +59,8 @@ public class ProfileControllerImpl implements ProfileController {
 
     @PostMapping("/update/all")
     @ResponseStatus(OK)
-    public UserDTO changeUserDetails(
-            @RequestHeader("username") String username,
-            @RequestBody UserDTO userDTO
-    ) {
+    public UserDTO changeUserDetails(@RequestHeader("username") String username,
+                                     @RequestBody UserDTO userDTO) {
         log.info("Changing user details");
         return profileService.changeUserDetails(username, userDTO);
     }
