@@ -19,7 +19,6 @@ public interface UserModelProxy {
     @GetMapping("/auth/{username}")
     ResponseEntity<UserAuthDTO> getUserAuth(@PathVariable String username);
 
-
     @PutMapping("/update/{username}")
     UserDTO updateUser(@PathVariable String username, @RequestBody UserDTO user);
 
